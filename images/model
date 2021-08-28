@@ -1,0 +1,21 @@
+digraph G {
+	overlap=scale splines=true
+	edge [fontsize=12]
+	node [fillcolor="#cae6df" shape=circle style=filled]
+	Trust_in_AI [label=Trust_in_AI]
+	Adoption_of_AI [label=Adoption_of_AI]
+	node [shape=box style=""]
+	ai_accountability_to_trust [label=ai_accountability_to_trust]
+	ai_fairness_to_trust [label=ai_fairness_to_trust]
+	ai_fat_to_trust [label=ai_fat_to_trust]
+	ai_lack_trust_low_adoption [label=ai_lack_trust_low_adoption]
+	ai_transparency_to_trust [label=ai_transparency_to_trust]
+	ai_trust_to_adoption [label=ai_trust_to_adoption]
+	Trust_in_AI -> Adoption_of_AI [label="0.830\np-val: 0.00"]
+	Trust_in_AI -> ai_transparency_to_trust [label=1.000]
+	Trust_in_AI -> ai_accountability_to_trust [label="1.357\np-val: 0.00"]
+	Trust_in_AI -> ai_fairness_to_trust [label="1.556\np-val: 0.00"]
+	Trust_in_AI -> ai_fat_to_trust [label="0.990\np-val: 0.00"]
+	Adoption_of_AI -> ai_trust_to_adoption [label=1.000]
+	Adoption_of_AI -> ai_lack_trust_low_adoption [label="1.086\np-val: 0.00"]
+}

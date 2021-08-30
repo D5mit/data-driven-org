@@ -2,8 +2,8 @@ digraph G {
 	overlap=scale splines=true
 	edge [fontsize=12]
 	node [fillcolor="#cae6df" shape=circle style=filled]
-	Trust_in_AI [label=Trust_in_AI]
 	Adoption_of_AI [label=Adoption_of_AI]
+	Trust_in_AI [label=Trust_in_AI]
 	node [shape=box style=""]
 	ai_accountability_to_trust [label=ai_accountability_to_trust]
 	ai_fairness_to_trust [label=ai_fairness_to_trust]

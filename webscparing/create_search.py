@@ -1,5 +1,9 @@
 
 
+
+
+isearch = 'organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND '
+
 ijournals = ['source:"European Journal of Information Systems"',
              'source:"Information Systems Journal"',
              'source:"Information Systems Research"',
@@ -8,8 +12,6 @@ ijournals = ['source:"European Journal of Information Systems"',
              'source:"Journal of Management information systems"',
              'source:"Journal of Strategic Information Systems"',
              'source:"MIS quarterly"']
-
-isearch = 'organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND "adoption"'
 
 for ijournal in ijournals:
     print(isearch + ijournal)

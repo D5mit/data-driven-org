@@ -115,7 +115,6 @@ def get_files_to_scrape_internet(ii_path, ii_pages):
         else:
             x_prev = x - 1
 
-
         x_prev = x_prev * 10
         x_curr = x * 10
 
@@ -135,16 +134,79 @@ def get_files_to_scrape_internet(ii_path, ii_pages):
 # get the list of urls to scrape
 # Parameters
 i_path_local    = r'C:\Users\Danie Smit\Documents\temp'
-i_path_internet = 'https://scholar.google.co.za/scholar?start=0&q=%22education+technology%22+%2B+%22design+science+research%22&hl=en&as_sdt=0,5&as_ylo=2018&as_yhi=2023&as_vis=1'
 i_local = False
-i_pages = 19
+i_select_journal = 5
+i_file_name_xlsx = 'data.xlsx'
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"European Journal of Information Systems"
+# 69 entries
+if i_select_journal == 1:
+    i_path_internet = 'https://scholar.google.com/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22European+Journal+of+Information+Systems%22&hl=en&as_sdt=0,5'
+    i_pages = 8
+    i_file_name_csv = 'data_1.csv'
+    i_file_name_xlsx = 'data_1.xlsx'
+
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"Information Systems Journal"
+# 42 entries
+if i_select_journal == 2:
+    i_path_internet = 'https://scholar.google.com/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22Information+Systems+Journal%22&hl=en&as_sdt=0,5'
+    i_pages = 5
+    i_file_name_csv = 'data_2.csv'
+    i_file_name_xlsx = 'data_2.xlsx'
+
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"Information Systems Research"
+if i_select_journal == 3:
+    i_path_internet = 'https://scholar.google.com/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22Information+Systems+Research%22&hl=en&as_sdt=0,5'
+    i_pages = 21    # 213 lots of suplicates with MISQ
+    i_file_name_csv = 'data_3.csv'
+    i_file_name_xlsx = 'data_3.xlsx'
+
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"Journal of the Association for Information Systems"
+if i_select_journal == 4:
+    i_path_internet = 'https://scholar.google.com/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22Journal+of+the+Association+for+Information+Systems%22&hl=en&as_sdt=0,5'
+    i_pages = 9   # 87
+    i_file_name_csv = 'data_4.csv'
+    i_file_name_xlsx = 'data_4.xlsx'
+
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"Journal of Information Technology" - source:"International Journal of Information Technology" - source: "Journal of Information Technology &" - source:"Journal of Information Technology and"
+if i_select_journal == 5:
+    i_path_internet = 'https://scholar.google.co.za/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22Journal+of+Information+Technology%22&hl=en&as_sdt=0,5&as_vis=1'
+    i_pages = 36 #80
+    i_file_name_csv = 'data_5.csv'
+    i_file_name_xlsx = 'data_5.xlsx'
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"Journal of Management information systems"
+if i_select_journal == 6:
+    i_path_internet = 'https://scholar.google.com/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22Journal+of+Management+information+systems%22&hl=en&as_sdt=0,5'
+    i_pages = 10  # 94
+    i_file_name_csv = 'data_6.csv'
+    i_file_name_xlsx = 'data_6.xlsx'
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"Journal of Strategic Information Systems"
+if i_select_journal == 7:
+    i_path_internet = 'https://scholar.google.com/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22Journal+of+Strategic+Information+Systems%22&hl=en&as_sdt=0,5'
+    i_pages = 4     #35
+    i_file_name_csv = 'data_7.csv'
+    i_file_name_xlsx = 'data_7.xlsx'
+
+# organisation OR organization OR company OR enterprise AND intext:"artificial intelligence" AND intext:"adoption" AND source:"MIS quarterly"
+if i_select_journal == 8:
+    i_path_internet = 'https://scholar.google.com/scholar?start=0&q=organisation+OR+organization+OR+company+OR+enterprise+AND+intext:%22artificial+intelligence%22+AND+intext:%22adoption%22+AND+source:%22MIS+quarterly%22&hl=en&as_sdt=0,5'
+    i_pages = 10    #105
+    i_file_name_csv = 'data_8.csv'
+    i_file_name_xlsx = 'data_8.xlsx'
+
+
 
 # get local or global file
 if i_local:
     i_files = get_files_to_scrape_local(i_path_local)
 else:
     i_files = get_files_to_scrape_internet(i_path_internet, i_pages)
-
 
 i_columns = ['article', 'author', 'year', 'journal', 'url', 'green_text', 'scraped_from']
 l_data = []
@@ -153,8 +215,9 @@ df = pd.DataFrame(l_data, columns=[i_columns])
 print('Parameters:')
 print('- i_path_local = ' + i_path_local)
 print('- i_path_internet = ' + i_path_internet)
-print('- i_local' + str(i_local))
-print('- i_pages' + str(i_pages))
+print('- i_local = ' + str(i_local))
+print('- i_pages = ' + str(i_pages))
+print('- i_file_name_xlsx = ' + i_file_name_xlsx)
 
 print('Start Scraping...')
 
@@ -174,5 +237,6 @@ for i_file in i_files:
 
 print('Number of articles extracted ' + str(len(df)))
 
-df.to_csv('data.csv', index=False)
-df.to_excel('data.xlsx')
+df.to_excel(i_file_name_xlsx)
+
+
